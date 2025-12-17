@@ -1,0 +1,45 @@
+idelsoft-bookcart-automation/
+│
+├── tests/                          # Todos los archivos de tests
+│   ├── ui/                         # Tests de interfaz de usuario
+│   │   ├── auth.spec.ts            # Tests de autenticación (login, registro)
+│   │   ├── books.spec.ts           # Tests relacionados con libros
+│   │   └── defects.spec.ts         # Tests que documentan bugs conocidos
+│   │
+│   ├── api/                        # Tests de API
+│   │   ├── books-api.spec.ts       # Tests de endpoints de libros
+│   │   └── auth-api.spec.ts        # Tests de endpoints de autenticación
+│   │
+│   └── integration/                # Tests de integración API + UI
+│       └── user-flow.spec.ts       # Tests que combinan API y UI
+│
+├── pages/                          # Page Object Model - clases de páginas
+│   ├── BasePage.ts                 # Clase base con funcionalidad común
+│   ├── HomePage.ts                 # Página principal de BookCart
+│   ├── LoginPage.ts                # Página de login
+│   ├── RegisterPage.ts             # Página de registro
+│   └── BooksPage.ts                # Página de listado de libros
+│
+├── api/                            # Clientes de API y helpers
+│   ├── BookCartAPI.ts              # Cliente para interactuar con la API
+│   └── endpoints.ts                # Constantes de endpoints
+│
+├── fixtures/                       # Fixtures personalizados de Playwright
+│   ├── test-fixtures.ts            # Fixtures principales (página autenticada, etc)
+│   └── api-fixtures.ts             # Fixtures para tests de API
+│
+├── utils/                          # Utilidades y helpers
+│   ├── data-generator.ts           # Generación de datos de prueba
+│   ├── logger.ts                   # Sistema de logging
+│   └── constants.ts                # Constantes del proyecto
+│
+├── config/                         # Configuraciones de ambiente
+│   ├── environments.ts             # URLs y configs por ambiente
+│   └── test-data.ts                # Datos de prueba reutilizables
+│
+├── playwright.config.ts            # Configuración principal de Playwright
+├── package.json                    # Dependencias del proyecto
+├── tsconfig.json                   # Configuración de TypeScript
+├── .env.example                    # Ejemplo de variables de ambiente
+├── .gitignore                      # Archivos a ignorar en Git
+└── README.md                       # Documentación del proyecto

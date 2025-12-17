@@ -1,0 +1,72 @@
+{
+  "compilerOptions": {
+    /* Opciones básicas de compilación */
+    "target": "ESNext",                    // Usar las características más modernas de JavaScript
+    "module": "commonjs",                  // Sistema de módulos compatible con Node.js
+    "lib": ["ESNext", "DOM"],              // Incluir tipos de ECMAScript moderno y del DOM
+    
+    /* Opciones de resolución de módulos */
+    "moduleResolution": "node",            // Resolver módulos como lo hace Node.js
+    "resolveJsonModule": true,             // Permitir importar archivos JSON
+    "esModuleInterop": true,               // Mejor compatibilidad con módulos ES6
+    "allowSyntheticDefaultImports": true,  // Permitir imports default sintéticos
+    
+    /* Opciones de generación de código */
+    "declaration": false,                  // No generar archivos .d.ts
+    "sourceMap": true,                     // Generar source maps para debugging
+    "outDir": "./dist",                    // Carpeta de salida para archivos compilados
+    "rootDir": "./",                       // Directorio raíz del código fuente
+    
+    /* Opciones de verificación de tipos */
+    "strict": true,                        // Habilitar todas las verificaciones estrictas
+    "noImplicitAny": true,                 // Error cuando hay tipos 'any' implícitos
+    "strictNullChecks": true,              // Verificación estricta de null y undefined
+    "strictFunctionTypes": true,           // Verificación estricta de tipos de función
+    "strictPropertyInitialization": false, // Permitir propiedades sin inicializar (útil para page objects)
+    "noImplicitThis": true,                // Error cuando 'this' tiene tipo implícito 'any'
+    "alwaysStrict": true,                  // Usar modo estricto en archivos generados
+    
+    /* Opciones adicionales de verificación */
+    "noUnusedLocals": true,                // Error si hay variables locales no usadas
+    "noUnusedParameters": true,            // Error si hay parámetros no usados
+    "noImplicitReturns": true,             // Error si no todas las rutas retornan valor
+    "noFallthroughCasesInSwitch": true,    // Error en switch con fallthrough
+    
+    /* Opciones de salida */
+    "skipLibCheck": true,                  // Saltar verificación de archivos .d.ts (más rápido)
+    "forceConsistentCasingInFileNames": true, // Forzar consistencia en nombres de archivos
+    
+    /* Opciones experimentales */
+    "experimentalDecorators": true,        // Habilitar decorators (útil si usas librerías que los usan)
+    "emitDecoratorMetadata": true,         // Emitir metadata de decorators
+    
+    /* Path mapping - útil para imports limpios */
+    "baseUrl": "./",                       // Base para resolver paths
+    "paths": {
+      "@pages/*": ["pages/*"],             // Permite import { LoginPage } from '@pages/LoginPage'
+      "@api/*": ["api/*"],                 // Permite import { BookCartAPI } from '@api/BookCartAPI'
+      "@utils/*": ["utils/*"],             // Permite import { generateUsername } from '@utils/data-generator'
+      "@fixtures/*": ["fixtures/*"],       // Permite import { test } from '@fixtures/test-fixtures'
+      "@config/*": ["config/*"]            // Permite import { ENV } from '@config/environments'
+    }
+  },
+  
+  /* Archivos a incluir en la compilación */
+  "include": [
+    "tests/**/*",
+    "pages/**/*",
+    "api/**/*",
+    "fixtures/**/*",
+    "utils/**/*",
+    "config/**/*",
+    "playwright.config.ts"
+  ],
+  
+  /* Archivos a excluir de la compilación */
+  "exclude": [
+    "node_modules",
+    "dist",
+    "playwright-report",
+    "test-results"
+  ]
+}
