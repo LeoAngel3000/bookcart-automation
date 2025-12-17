@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '@pages/LoginPage';
 import { ERROR_MESSAGES, TEST_TAGS } from '@utils/constants';
+import { TEST_DATA } from '@config/test-data';
 
 test.describe('Authentication Tests', () => {
   
@@ -8,8 +9,7 @@ test.describe('Authentication Tests', () => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
-    await loginPage.login('invalid_user', 'wrong_password');
-
+    await loginPage.login(TEST_DATA.users.invalid.username, TEST_DATA.users.invalid.password);
     // Documenting the defect: According to TC-005, the app fails to show an error message
     // We use a soft assertion or a comment to explain why this might fail
     await expect(loginPage.snackbar).toBeVisible({ timeout: 5000 })

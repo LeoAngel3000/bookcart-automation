@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-
+import { ENV } from './config/environments';
 /**
  * Comprehensive Playwright configuration for the BookCart project
  * * This configuration includes:
@@ -64,8 +64,7 @@ export default defineConfig({
      * Allows using page.goto('/') instead of full URL
      * Facilitates switching between environments (QA, staging, prod)
      */
-    baseURL: process.env.BASE_URL || 'https://bookcart.azurewebsites.net',
-    
+    baseURL: ENV.baseUrl,    
     /**
      * Trace: Detailed execution recording
      * 'on-first-retry': Only records when a test fails and is retried

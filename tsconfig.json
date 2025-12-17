@@ -60,7 +60,7 @@
     "utils/**/*",
     "config/**/*",
     "playwright.config.ts"
-  ],
+, "api"  ],
   
   /* Files to exclude from compilation */
   "exclude": [

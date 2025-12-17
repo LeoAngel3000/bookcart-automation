@@ -1,0 +1,48 @@
+name: Playwright Tests
+# This defines when the tests will run
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  # Allows you to run tests manually from the GitHub Actions tab
+  workflow_dispatch: 
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest # High-performance Linux server
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        # Cache dependencies to make the run faster
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      # We run all tests, including our custom projects (UI, API, etc.)
+      run: npx playwright test
+      env:
+        # Use environment variables if needed
+        BASE_URL: https://bookcart.azurewebsites.net
+        CI: true
+
+    - name: Upload Test Report
+      # This saves the HTML report even if the tests fail
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
