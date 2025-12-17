@@ -1,57 +1,57 @@
 {
   "compilerOptions": {
-    /* Opciones básicas de compilación */
-    "target": "ESNext",                    // Usar las características más modernas de JavaScript
-    "module": "commonjs",                  // Sistema de módulos compatible con Node.js
-    "lib": ["ESNext", "DOM"],              // Incluir tipos de ECMAScript moderno y del DOM
+    /* Basic compiler options */
+    "target": "ESNext",                    // Use the latest ECMAScript features
+    "module": "commonjs",                  // Module system compatible with Node.js
+    "lib": ["ESNext", "DOM"],              // Include modern ECMAScript and DOM types
     
-    /* Opciones de resolución de módulos */
-    "moduleResolution": "node",            // Resolver módulos como lo hace Node.js
-    "resolveJsonModule": true,             // Permitir importar archivos JSON
-    "esModuleInterop": true,               // Mejor compatibilidad con módulos ES6
-    "allowSyntheticDefaultImports": true,  // Permitir imports default sintéticos
+    /* Module resolution options */
+    "moduleResolution": "node",            // Resolve modules like Node.js
+    "resolveJsonModule": true,             // Allow importing JSON files
+    "esModuleInterop": true,               // Better compatibility with ES6 modules
+    "allowSyntheticDefaultImports": true,  // Allow synthetic default imports
     
-    /* Opciones de generación de código */
-    "declaration": false,                  // No generar archivos .d.ts
-    "sourceMap": true,                     // Generar source maps para debugging
-    "outDir": "./dist",                    // Carpeta de salida para archivos compilados
-    "rootDir": "./",                       // Directorio raíz del código fuente
+    /* Code generation options */
+    "declaration": false,                  // Do not generate .d.ts files
+    "sourceMap": true,                     // Generate source maps for debugging
+    "outDir": "./dist",                    // Output directory for compiled files
+    "rootDir": "./",                       // Root directory of source code
     
-    /* Opciones de verificación de tipos */
-    "strict": true,                        // Habilitar todas las verificaciones estrictas
-    "noImplicitAny": true,                 // Error cuando hay tipos 'any' implícitos
-    "strictNullChecks": true,              // Verificación estricta de null y undefined
-    "strictFunctionTypes": true,           // Verificación estricta de tipos de función
-    "strictPropertyInitialization": false, // Permitir propiedades sin inicializar (útil para page objects)
-    "noImplicitThis": true,                // Error cuando 'this' tiene tipo implícito 'any'
-    "alwaysStrict": true,                  // Usar modo estricto en archivos generados
+    /* Type checking options */
+    "strict": true,                        // Enable all strict type-checking options
+    "noImplicitAny": true,                 // Error on implicit 'any' types
+    "strictNullChecks": true,              // Strict null and undefined checks
+    "strictFunctionTypes": true,           // Strict function type checks
+    "strictPropertyInitialization": false, // Allow uninitialized properties (useful for page objects)
+    "noImplicitThis": true,                // Error when 'this' has an implicit 'any' type
+    "alwaysStrict": true,                  // Use strict mode in generated files
     
-    /* Opciones adicionales de verificación */
-    "noUnusedLocals": true,                // Error si hay variables locales no usadas
-    "noUnusedParameters": true,            // Error si hay parámetros no usados
-    "noImplicitReturns": true,             // Error si no todas las rutas retornan valor
-    "noFallthroughCasesInSwitch": true,    // Error en switch con fallthrough
+    /* Additional checks */
+    "noUnusedLocals": true,                // Error if there are unused local variables
+    "noUnusedParameters": true,            // Error if there are unused parameters
+    "noImplicitReturns": true,             // Error if not all code paths return a value
+    "noFallthroughCasesInSwitch": true,    // Error on fallthrough cases in switch statements
     
-    /* Opciones de salida */
-    "skipLibCheck": true,                  // Saltar verificación de archivos .d.ts (más rápido)
-    "forceConsistentCasingInFileNames": true, // Forzar consistencia en nombres de archivos
+    /* Output options */
+    "skipLibCheck": true,                  // Skip type checking of .d.ts files (faster)
+    "forceConsistentCasingInFileNames": true, // Force consistent casing in file names
     
-    /* Opciones experimentales */
-    "experimentalDecorators": true,        // Habilitar decorators (útil si usas librerías que los usan)
-    "emitDecoratorMetadata": true,         // Emitir metadata de decorators
+    /* Experimental options */
+    "experimentalDecorators": true,        // Enable decorators (useful for some libraries)
+    "emitDecoratorMetadata": true,         // Emit design-type metadata for decorators
     
-    /* Path mapping - útil para imports limpios */
-    "baseUrl": "./",                       // Base para resolver paths
+    /* Path mapping - useful for clean imports */
+    "baseUrl": "./",                       // Base directory for resolving paths
     "paths": {
-      "@pages/*": ["pages/*"],             // Permite import { LoginPage } from '@pages/LoginPage'
-      "@api/*": ["api/*"],                 // Permite import { BookCartAPI } from '@api/BookCartAPI'
-      "@utils/*": ["utils/*"],             // Permite import { generateUsername } from '@utils/data-generator'
-      "@fixtures/*": ["fixtures/*"],       // Permite import { test } from '@fixtures/test-fixtures'
-      "@config/*": ["config/*"]            // Permite import { ENV } from '@config/environments'
+      "@pages/*": ["pages/*"],             // Allows import { LoginPage } from '@pages/LoginPage'
+      "@api/*": ["api/*"],                 // Allows import { BookCartAPI } from '@api/BookCartAPI'
+      "@utils/*": ["utils/*"],             // Allows import { generateUsername } from '@utils/data-generator'
+      "@fixtures/*": ["fixtures/*"],       // Allows import { test } from '@fixtures/test-fixtures'
+      "@config/*": ["config/*"]            // Allows import { ENV } from '@config/environments'
     }
   },
   
-  /* Archivos a incluir en la compilación */
+  /* Files to include in compilation */
   "include": [
     "tests/**/*",
     "pages/**/*",
@@ -62,7 +62,7 @@
     "playwright.config.ts"
   ],
   
-  /* Archivos a excluir de la compilación */
+  /* Files to exclude from compilation */
   "exclude": [
     "node_modules",
     "dist",

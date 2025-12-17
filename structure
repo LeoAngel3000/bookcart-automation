@@ -1,45 +1,45 @@
 idelsoft-bookcart-automation/
 │
-├── tests/                          # Todos los archivos de tests
-│   ├── ui/                         # Tests de interfaz de usuario
-│   │   ├── auth.spec.ts            # Tests de autenticación (login, registro)
-│   │   ├── books.spec.ts           # Tests relacionados con libros
-│   │   └── defects.spec.ts         # Tests que documentan bugs conocidos
+├── tests/                          # Test specifications directory
+│   ├── ui/                         # User Interface (UI) tests
+│   │   ├── auth.spec.ts            # Authentication tests (Login, Register)
+│   │   ├── books.spec.ts           # Book-related functionality tests
+│   │   └── defects.spec.ts         # Documentation of known defects/bugs
 │   │
-│   ├── api/                        # Tests de API
-│   │   ├── books-api.spec.ts       # Tests de endpoints de libros
-│   │   └── auth-api.spec.ts        # Tests de endpoints de autenticación
+│   ├── api/                        # API tests
+│   │   ├── books-api.spec.ts       # Books endpoint tests
+│   │   └── auth-api.spec.ts        # Authentication endpoint tests
 │   │
-│   └── integration/                # Tests de integración API + UI
-│       └── user-flow.spec.ts       # Tests que combinan API y UI
+│   └── integration/                # Integration tests (API + UI)
+│       └── user-flow.spec.ts       # Combined workflows (e.g., API setup -> UI verify)
 │
-├── pages/                          # Page Object Model - clases de páginas
-│   ├── BasePage.ts                 # Clase base con funcionalidad común
-│   ├── HomePage.ts                 # Página principal de BookCart
-│   ├── LoginPage.ts                # Página de login
-│   ├── RegisterPage.ts             # Página de registro
-│   └── BooksPage.ts                # Página de listado de libros
+├── pages/                          # Page Object Model (POM) classes
+│   ├── BasePage.ts                 # Base class with common methods/properties
+│   ├── HomePage.ts                 # BookCart landing page
+│   ├── LoginPage.ts                # Login page interaction
+│   ├── RegisterPage.ts             # Registration page interaction
+│   └── BooksPage.ts                # Books listing and details page
 │
-├── api/                            # Clientes de API y helpers
-│   ├── BookCartAPI.ts              # Cliente para interactuar con la API
-│   └── endpoints.ts                # Constantes de endpoints
+├── api/                            # API clients and request helpers
+│   ├── BookCartAPI.ts              # API Client wrapper for HTTP requests
+│   └── endpoints.ts                # API endpoint constants
 │
-├── fixtures/                       # Fixtures personalizados de Playwright
-│   ├── test-fixtures.ts            # Fixtures principales (página autenticada, etc)
-│   └── api-fixtures.ts             # Fixtures para tests de API
+├── fixtures/                       # Custom Playwright fixtures
+│   ├── test-fixtures.ts            # Core fixtures (e.g., authenticatedPage)
+│   └── api-fixtures.ts             # Specific fixtures for API testing
 │
-├── utils/                          # Utilidades y helpers
-│   ├── data-generator.ts           # Generación de datos de prueba
-│   ├── logger.ts                   # Sistema de logging
-│   └── constants.ts                # Constantes del proyecto
+├── utils/                          # Utilities and shared helpers
+│   ├── data-generator.ts           # Dynamic test data generation (Faker, etc.)
+│   ├── logger.ts                   # Custom logging utility
+│   └── constants.ts                # Global project constants
 │
-├── config/                         # Configuraciones de ambiente
-│   ├── environments.ts             # URLs y configs por ambiente
-│   └── test-data.ts                # Datos de prueba reutilizables
+├── config/                         # Environment configurations
+│   ├── environments.ts             # Environment-specific URLs and settings
+│   └── test-data.ts                # Static/Reusable test data
 │
-├── playwright.config.ts            # Configuración principal de Playwright
-├── package.json                    # Dependencias del proyecto
-├── tsconfig.json                   # Configuración de TypeScript
-├── .env.example                    # Ejemplo de variables de ambiente
-├── .gitignore                      # Archivos a ignorar en Git
-└── README.md                       # Documentación del proyecto
+├── playwright.config.ts            # Main Playwright configuration file
+├── package.json                    # Project dependencies and scripts
+├── tsconfig.json                   # TypeScript compiler configuration
+├── .env.example                    # Template for environment variables
+├── .gitignore                      # Git ignore rules
+└── README.md                       # Project documentation and setup guide

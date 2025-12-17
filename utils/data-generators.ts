@@ -1,36 +1,31 @@
 /**
- * Data Generator - Generador de datos de prueba únicos y realistas
- * 
- * Este módulo proporciona funciones para generar datos de prueba que necesitamos
- * en nuestros tests, como usernames únicos, emails, passwords, etc.
- * 
- * La unicidad es crucial en testing porque:
- * - No queremos que tests fallen porque intentamos crear un usuario que ya existe
- * - Queremos poder ejecutar los mismos tests múltiples veces sin colisiones
- * - En ambientes compartidos, múltiples testers pueden estar ejecutando simultáneamente
+ * Data Generator - Unique and realistic test data generator
+ * * This module provides functions to generate test data required for our tests,
+ * such as unique usernames, emails, passwords, and more.
+ * * Uniqueness is crucial in testing because:
+ * - It prevents test failures due to attempts to create an existing user.
+ * - It allows running the same tests multiple times without data collisions.
+ * - In shared environments, multiple testers can execute suites simultaneously.
  */
 
 /**
- * Genera un username único usando timestamp y random
- * 
- * Formato: prefix_timestamp_random
- * Ejemplo: "testuser_1703012345678_a3f"
- * 
- * @param prefix - Prefijo para identificar el tipo de test (default: 'autotest')
- * @returns Username único garantizado
+ * Generates a unique username using a timestamp and a random string.
+ * * Format: prefix_timestamp_random
+ * Example: "testuser_1703012345678_a3f"
+ * * @param prefix - Prefix to identify the test type (default: 'autotest')
+ * @returns A guaranteed unique username
  */
 export function generateUniqueUsername(prefix: string = 'autotest'): string {
-  const timestamp = Date.now(); // Milisegundos desde 1970 - siempre único
-  const random = Math.random().toString(36).substring(2, 5); // 3 caracteres aleatorios
+  const timestamp = Date.now(); // Milliseconds since 1970 - always unique
+  const random = Math.random().toString(36).substring(2, 5); // 3 random characters
   return `${prefix}_${timestamp}_${random}`;
 }
 
 /**
- * Genera un email único basado en username
- * 
- * @param username - Username base para el email
- * @param domain - Dominio del email (default: 'test.com')
- * @returns Email único
+ * Generates a unique email based on a username.
+ * * @param username - Base username for the email
+ * @param domain - Email domain (default: 'test.com')
+ * @returns A unique email address
  */
 export function generateUniqueEmail(username?: string, domain: string = 'test.com'): string {
   const user = username || generateUniqueUsername();
@@ -38,47 +33,44 @@ export function generateUniqueEmail(username?: string, domain: string = 'test.co
 }
 
 /**
- * Genera un password válido según reglas de BookCart
- * 
- * BookCart requiere:
- * - Al menos una mayúscula
- * - Al menos una minúscula
- * - Al menos un número
- * - Al menos un carácter especial
- * - Mínimo 6 caracteres
- * 
- * @param length - Longitud del password (default: 10)
- * @returns Password que cumple todas las validaciones
+ * Generates a valid password according to BookCart's business rules.
+ * * BookCart requires:
+ * - At least one uppercase letter
+ * - At least one lowercase letter
+ * - At least one number
+ * - At least one special character
+ * - Minimum length of 6 characters
+ * * @param length - Password length (default: 10)
+ * @returns A password that meets all validation requirements
  */
 export function generateValidPassword(length: number = 10): string {
-  // Definimos los conjuntos de caracteres que necesitamos
+  // Define character sets required
   const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const lowercase = 'abcdefghijklmnopqrstuvwxyz';
   const numbers = '0123456789';
   const special = '@#$%&*!';
   
-  // Empezamos con al menos un carácter de cada tipo requerido
+  // Ensure at least one character from each required set
   let password = '';
   password += uppercase[Math.floor(Math.random() * uppercase.length)];
   password += lowercase[Math.floor(Math.random() * lowercase.length)];
   password += numbers[Math.floor(Math.random() * numbers.length)];
   password += special[Math.floor(Math.random() * special.length)];
   
-  // Llenamos el resto con caracteres aleatorios de todos los conjuntos
+  // Fill the remaining length with random characters from all sets
   const allChars = uppercase + lowercase + numbers + special;
   for (let i = password.length; i < length; i++) {
     password += allChars[Math.floor(Math.random() * allChars.length)];
   }
   
-  // Mezclamos los caracteres para que no siempre empiecen en el mismo orden
+  // Shuffle the characters so they don't always start in the same order
   return password.split('').sort(() => Math.random() - 0.5).join('');
 }
 
 /**
- * Genera datos completos de un usuario de prueba
- * 
- * @param prefix - Prefijo para el username
- * @returns Objeto con todos los datos del usuario
+ * Generates a full set of test user data
+ * * @param prefix - Prefix for the username
+ * @returns An object containing all user data fields
  */
 export interface TestUser {
   firstName: string;
@@ -103,12 +95,11 @@ export function generateTestUser(prefix: string = 'test'): TestUser {
 }
 
 /**
- * Genera un string aleatorio de longitud específica
- * Útil para testing de límites de campos de texto
- * 
- * @param length - Longitud deseada
- * @param charset - Conjunto de caracteres a usar (default: alfanumérico)
- * @returns String aleatorio
+ * Generates a random string of a specific length.
+ * Useful for boundary testing in text fields.
+ * * @param length - Desired length
+ * @param charset - Character set to use (default: alphanumeric)
+ * @returns A random string
  */
 export function generateRandomString(
   length: number, 
@@ -122,61 +113,55 @@ export function generateRandomString(
 }
 
 /**
- * Genera un número aleatorio entre min y max (inclusive)
- * 
- * @param min - Valor mínimo
- * @param max - Valor máximo
- * @returns Número aleatorio en el rango
+ * Generates a random number between min and max (inclusive).
+ * * @param min - Minimum value
+ * @param max - Maximum value
+ * @returns A random number within the range
  */
 export function generateRandomNumber(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
- * Genera un precio aleatorio para pruebas
- * 
- * @param min - Precio mínimo (default: 10)
- * @param max - Precio máximo (default: 500)
- * @returns Precio con 2 decimales
+ * Generates a random price for testing purposes.
+ * * @param min - Minimum price (default: 10)
+ * @param max - Maximum price (default: 500)
+ * @returns A price rounded to 2 decimal places
  */
 export function generateRandomPrice(min: number = 10, max: number = 500): number {
   const price = Math.random() * (max - min) + min;
-  return Math.round(price * 100) / 100; // Redondear a 2 decimales
+  return Math.round(price * 100) / 100; // Round to 2 decimals
 }
 
 /**
- * Espera un tiempo específico (útil para debugging o esperas explícitas)
- * 
- * NOTA: En general, en Playwright deberías usar las esperas automáticas
- * en lugar de sleep(). Usa esto solo cuando absolutamente necesites
- * una espera fija, como cuando esperas que una animación termine.
- * 
- * @param ms - Milisegundos a esperar
+ * Suspends execution for a specific duration.
+ * * NOTE: Generally, you should rely on Playwright's auto-waiting features
+ * instead of sleep(). Use this only when a fixed wait is strictly necessary,
+ * such as waiting for specific UI animations to complete.
+ * * @param ms - Milliseconds to wait
  */
 export function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 /**
- * Formatea una fecha para logging
- * 
- * @param date - Fecha a formatear (default: ahora)
- * @returns String con formato legible
+ * Formats a date for logging purposes.
+ * * @param date - Date to format (default: now)
+ * @returns A human-readable timestamp string
  */
 export function formatDateForLog(date: Date = new Date()): string {
   return date.toISOString().replace('T', ' ').split('.')[0];
 }
 
 /**
- * Sanitiza un string para usar en nombres de archivo
- * Remueve caracteres que no son seguros para nombres de archivo
- * 
- * @param str - String a sanitizar
- * @returns String seguro para usar en nombres de archivo
+ * Sanitizes a string for use in filenames.
+ * Removes characters that are not safe for filesystem paths.
+ * * @param str - String to sanitize
+ * @returns A filesystem-safe string
  */
 export function sanitizeForFilename(str: string): string {
   return str
-    .replace(/[^a-zA-Z0-9-_]/g, '_') // Reemplazar caracteres especiales con _
-    .replace(/_+/g, '_') // Reemplazar múltiples _ consecutivos con uno solo
-    .replace(/^_|_$/g, ''); // Remover _ del inicio y final
+    .replace(/[^a-zA-Z0-9-_]/g, '_') // Replace special characters with underscores
+    .replace(/_+/g, '_') // Replace multiple consecutive underscores with a single one
+    .replace(/^_|_$/g, ''); // Remove leading and trailing underscores
 }

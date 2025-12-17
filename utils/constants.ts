@@ -1,19 +1,17 @@
 /**
- * Constants - Constantes globales del proyecto
- * 
- * Este archivo centraliza todos los valores constantes que se usan en múltiples
- * lugares del framework. Esto sigue el principio DRY (Don't Repeat Yourself).
- * 
- * Beneficios:
- * - Fácil mantenimiento: cambiar un valor en un solo lugar
- * - Previene typos: usar constantes reduce errores de escritura
- * - Documentación: los nombres descriptivos documentan el propósito de cada valor
- * - Type safety: TypeScript verifica que uses los valores correctos
+ * Global Project Constants
+ * * This file centralizes all constant values used across the framework,
+ * following the DRY (Don't Repeat Yourself) principle.
+ * * Benefits:
+ * - Easy maintenance: change a value in a single place.
+ * - Typo prevention: using constants reduces string-related errors.
+ * - Documentation: descriptive names document the purpose of each value.
+ * - Type safety: TypeScript ensures correct value usage.
  */
 
 /**
- * URLs de la aplicación BookCart
- * Estas se pueden sobrescribir con variables de ambiente
+ * BookCart Application URLs
+ * These can be overridden via environment variables
  */
 export const URLS = {
   BASE_URL: process.env.BASE_URL || 'https://bookcart.azurewebsites.net',
@@ -22,8 +20,8 @@ export const URLS = {
 } as const;
 
 /**
- * Rutas de la aplicación (relativas a BASE_URL)
- * Usamos estas rutas en lugar de hardcodear strings en los tests
+ * Application Routes (Relative to BASE_URL)
+ * Used to avoid hardcoding strings within test files
  */
 export const ROUTES = {
   HOME: '/',
@@ -36,8 +34,8 @@ export const ROUTES = {
 } as const;
 
 /**
- * Endpoints de la API (relativos a API_URL)
- * Centralizamos los endpoints para fácil mantenimiento
+ * API Endpoints (Relative to API_URL)
+ * Centralized for easy endpoint management
  */
 export const API_ENDPOINTS = {
   // User endpoints
@@ -64,43 +62,43 @@ export const API_ENDPOINTS = {
 } as const;
 
 /**
- * Timeouts en milisegundos
- * Diferentes acciones requieren diferentes tiempos de espera
+ * Timeouts in milliseconds
+ * Different actions require different wait times
  */
 export const TIMEOUTS = {
-  // Timeouts cortos para elementos que deberían aparecer rápido
-  SHORT: 3000,           // 3 segundos - para elementos simples
-  MEDIUM: 10000,         // 10 segundos - para la mayoría de las acciones
-  LONG: 30000,           // 30 segundos - para navegaciones lentas
-  API_REQUEST: 15000,    // 15 segundos - para requests de API
+  // Short timeouts for fast-appearing elements
+  SHORT: 3000,           // 3 seconds - for simple elements
+  MEDIUM: 10000,         // 10 seconds - for most actions
+  LONG: 30000,           // 30 seconds - for slow navigations
+  API_REQUEST: 15000,    // 15 seconds - for API requests
   
-  // Timeouts específicos para casos especiales
-  ANIMATION: 1000,       // 1 segundo - esperar que animaciones terminen
-  DEBOUNCE: 300,         // 300ms - esperar que búsquedas con debounce se activen
+  // Specific timeouts for special cases
+  ANIMATION: 1000,       // 1 second - waiting for UI animations
+  DEBOUNCE: 300,         // 300ms - waiting for debounced search triggers
 } as const;
 
 /**
- * Mensajes de error esperados en la aplicación
- * Útil para verificar que los errores correctos aparecen
+ * Expected Application Error Messages
+ * Useful for validating correct error feedback
  */
 export const ERROR_MESSAGES = {
-  // Errores de autenticación
+  // Authentication errors
   INVALID_CREDENTIALS: 'Username or Password is incorrect',
   USERNAME_NOT_AVAILABLE: 'User Name is not available',
   
-  // Errores de validación
+  // Validation errors
   REQUIRED_FIELD: 'This field is required',
   INVALID_EMAIL: 'Please enter a valid email',
   PASSWORD_MISMATCH: 'Passwords do not match',
   
-  // Errores de API
+  // API errors
   UNAUTHORIZED: 'Unauthorized',
   NOT_FOUND: 'Not Found',
   INTERNAL_SERVER_ERROR: 'Internal Server Error',
 } as const;
 
 /**
- * Mensajes de éxito esperados
+ * Expected Success Messages
  */
 export const SUCCESS_MESSAGES = {
   REGISTRATION_SUCCESS: 'Registration successful',
@@ -110,42 +108,42 @@ export const SUCCESS_MESSAGES = {
 } as const;
 
 /**
- * Selectores CSS comunes que se usan en múltiples páginas
- * NOTA: En el Page Object Model ideal, los selectores viven en las clases de página
- * Estos son solo selectores que son verdaderamente globales (navbar, footer, etc)
+ * Common CSS Selectors
+ * NOTE: In a standard POM, most selectors live within Page Classes.
+ * These are reserved for truly global elements (navbar, footer, etc.)
  */
 export const COMMON_SELECTORS = {
-  // Navegación
+  // Navigation
   NAVBAR: 'mat-toolbar',
   LOGIN_BUTTON: 'button:has-text("Login")',
   LOGOUT_BUTTON: 'button:has-text("Logout")',
   CART_ICON: 'mat-icon:has-text("shopping_cart")',
   
-  // Elementos de formulario comunes
+  // Common Form Elements
   SUBMIT_BUTTON: 'button[type="submit"]',
   CANCEL_BUTTON: 'button:has-text("Cancel")',
   
-  // Mensajes y notificaciones
+  // Messages and Notifications
   SNACKBAR: '.mat-snack-bar-container',
   ERROR_MESSAGE: '.mat-error',
   
-  // Spinners y loading
+  // Spinners and Loading indicators
   SPINNER: 'mat-spinner',
   PROGRESS_BAR: 'mat-progress-bar',
 } as const;
 
 /**
- * Datos de prueba conocidos
- * Algunos tests necesitan datos específicos que ya existen en el sistema
+ * Known Test Data
+ * Specific data required for certain test scenarios
  */
 export const TEST_DATA = {
-  // Usuario de prueba que sabemos que existe en BookCart
+  // Existing test user in BookCart system
   EXISTING_USER: {
     username: 'ortom',
     password: 'pass1234',
   },
   
-  // Categorías conocidas de libros
+  // Known book categories
   KNOWN_CATEGORIES: [
     'Biography',
     'Fantasy',
@@ -154,8 +152,8 @@ export const TEST_DATA = {
     'Fiction',
   ],
   
-  // Términos de búsqueda que deberían encontrar libros
-  // NOTA: Actualmente BookCart tiene issues con esto, estos tests fallarán
+  // Search terms expected to find results
+  // NOTE: BookCart currently has issues; these tests may fail
   SEARCH_TERMS: {
     HARRY: 'Harry',
     POTTER: 'Potter',
@@ -164,7 +162,7 @@ export const TEST_DATA = {
 } as const;
 
 /**
- * Configuración de reportes y logging
+ * Reporting and Logging Configuration
  */
 export const REPORTING = {
   SCREENSHOT_ON_FAILURE: true,
@@ -174,10 +172,10 @@ export const REPORTING = {
 } as const;
 
 /**
- * Configuración de Browser
+ * Browser Configuration
  */
 export const BROWSER_CONFIG = {
-  HEADLESS: process.env.HEADLESS !== 'false',  // Ejecutar sin UI por defecto
+  HEADLESS: process.env.HEADLESS !== 'false',  // Run headless by default
   VIEWPORT: {
     WIDTH: 1920,
     HEIGHT: 1080,
@@ -186,8 +184,8 @@ export const BROWSER_CONFIG = {
 } as const;
 
 /**
- * Códigos de estado HTTP esperados
- * Útil para tests de API
+ * Expected HTTP Status Codes
+ * Useful for API testing assertions
  */
 export const HTTP_STATUS = {
   OK: 200,
@@ -201,8 +199,8 @@ export const HTTP_STATUS = {
 } as const;
 
 /**
- * Tags para ejecución condicional de tests
- * Estos coinciden con los grep patterns en playwright.config.ts
+ * Tags for Conditional Test Execution
+ * Matches grep patterns in playwright.config.ts
  */
 export const TEST_TAGS = {
   UI: '@ui',
@@ -215,16 +213,16 @@ export const TEST_TAGS = {
 } as const;
 
 /**
- * Configuración de reintentos para acciones específicas
- * Algunas acciones son inherentemente más propensas a fallar y necesitan reintentos
+ * Retry Configuration for specific actions
+ * Inherently flaky actions may require localized retries
  */
 export const RETRY_CONFIG = {
   MAX_RETRIES: 3,
-  RETRY_DELAY: 1000,  // 1 segundo entre reintentos
+  RETRY_DELAY: 1000,  // 1 second between retries
 } as const;
 
 /**
- * Regex patterns útiles para validación
+ * Utility Regex Patterns for Validation
  */
 export const PATTERNS = {
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
