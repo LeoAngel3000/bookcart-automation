@@ -1,5 +1,5 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { TIMEOUTS, URLS } from '@utils/constants';
+import { TIMEOUTS } from '@utils/constants';
 
 /**
  * BasePage - Main parent class for all Page Objects

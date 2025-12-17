@@ -1,25 +1,79 @@
 {
-  "name": "idelsoft-bookcart-automation",
+  "name": "bookcart-test-automation",
   "version": "1.0.0",
-  "description": "SDET Take-Home Assignment - iDelsoft 2025",
+  "description": "Professional test automation framework for BookCart e-commerce application using Playwright + TypeScript",
   "main": "index.js",
-  "scripts": {
-    "test": "npx playwright test",
-    "test:ui": "npx playwright test --project=chromium-ui",
-    "test:api": "npx playwright test --project=api-tests",
-    "test:integration": "npx playwright test --project=integration-tests",
-    "test:smoke": "npx playwright test --project=smoke-tests",
-    "test:defects": "npx playwright test --project=defect-documentation",
-    "test:debug": "npx playwright test --debug",
-    "report": "npx playwright show-report"
-  },
-  "keywords": ["playwright", "typescript", "sdet", "testing"],
-  "author": "Leonardo Ángel Cárrega",
-  "license": "ISC",
   "type": "commonjs",
+  "author": {
+    "name": "Leonardo Ángel Cárrega",
+    "email": "leonardo.carrega@gmail.com",
+    "url": "https://www.linkedin.com/in/angelcarrega/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "playwright",
+    "typescript",
+    "test-automation",
+    "e2e-testing",
+    "api-testing",
+    "page-object-model",
+    "ci-cd",
+    "qa-automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/bookcart-automation.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:api": "playwright test --grep @api",
+    "test:integration": "playwright test --grep @integration",
+    "test:regression": "playwright test --grep @regression",
+    "test:defects": "playwright test --grep @defect",
+    "test:chromium": "playwright test --project=chromium-ui",
+    "test:firefox": "playwright test --project=firefox-ui",
+    "test:webkit": "playwright test --project=webkit-ui",
+    "test:auth": "playwright test tests/ui/auth.spec.ts",
+    "test:books-api": "playwright test tests/api/books-api.spec.ts",
+    "test:integration-flow": "playwright test tests/integration/user-flow.spec.ts",
+    "test:parallel": "playwright test --workers=4",
+    "test:serial": "playwright test --workers=1",
+    "test:slow": "playwright test --slow-mo=500",
+    "test:trace": "playwright test --trace=on",
+    "test:video": "playwright test --video=on",
+    "report": "playwright show-report",
+    "report:open": "playwright show-report --host=0.0.0.0 --port=9323",
+    "trace:view": "playwright show-trace",
+    "codegen": "playwright codegen https://bookcart.azurewebsites.net",
+    "install:browsers": "playwright install --with-deps",
+    "install:chromium": "playwright install --with-deps chromium",
+    "clean": "rm -rf playwright-report test-results .playwright",
+    "clean:all": "rm -rf node_modules playwright-report test-results .playwright package-lock.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'Linting not configured - add ESLint if needed'",
+    "format": "echo 'Formatting not configured - add Prettier if needed'",
+    "pretest": "npm run typecheck",
+    "posttest": "echo '\n✅ Tests completed! Run \"npm run report\" to view results\n'",
+    "setup": "npm install && npm run install:browsers",
+    "ci": "npm run clean && npm install && npm run install:browsers && npm test",
+    "ci:smoke": "npm run test:smoke",
+    "ci:api": "npm run test:api",
+    "ci:ui": "npm run test:chromium",
+    "ci:integration": "npm run test:integration"
+  },
   "devDependencies": {
-    "@playwright/test": "^1.50.0",
-    "@types/node": "^22.0.0",
-    "dotenv": "^16.4.7"
-  }
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "typescript": "^5.3.0"
+  },
+  "optionalDependencies": {},
+  "peerDependencies": {}
 }

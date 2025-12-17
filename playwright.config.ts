@@ -51,7 +51,6 @@ export default defineConfig({
   reporter: [
     ['html', { open: 'never' }],  // Do not open automatically, just generate
     ['list'],  // Show in console
-    ...(process.env.CI ? [['json', { outputFile: 'test-results.json' }]] : [])
   ],
   
   /**
