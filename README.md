@@ -227,7 +227,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/bookcart-automation.git
+git clone https://github.com/LeoAngel3000/bookcart-automation.git
 cd bookcart-automation
 ```
 
@@ -603,24 +603,7 @@ If this were a real project, these would be valuable additions:
 
 ---
 
-## 👨‍💻 Author & Contact
 
-**Leonardo Ángel Cárrega**  
-SDET | Test Automation Engineer
-
-📧 Email: leonardo.carrega@gmail.com  
-📱 Phone: +549 (351) 7898053  
-📍 Location: Salsipuedes, Córdoba, Argentina  
-💼 LinkedIn: [linkedin.com/in/angelcarrega](https://www.linkedin.com/in/angelcarrega/)
-
-### Professional Experience Highlights
-
-- 12+ years in QA and Test Automation
-- Expertise in: Selenium, Playwright, Cypress, Python, TypeScript
-- Experience with: REST APIs, CI/CD, Agile/Scrum methodologies
-- Previous companies: Inisoft/Valtech, Encora, Vates/Thomson Reuters, Globant
-
----
 
 ## 📄 License
 
