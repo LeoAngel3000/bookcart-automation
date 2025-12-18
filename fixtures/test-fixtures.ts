@@ -204,7 +204,7 @@ export const test = base.extend<BookCartFixtures>({
     }, {
       token: token,
       username: testUser.username,
-      userId: 1, // You might need to extract actual userId from register response
+      _userId: 1, // You might need to extract actual userId from register response
     });
 
     // Step 3: Reload page so the app picks up the authentication

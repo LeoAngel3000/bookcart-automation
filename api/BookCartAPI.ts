@@ -63,6 +63,32 @@ export class BookCartAPI {
 
     return headers;
   }
+  
+  /**
+   * Safely parses JSON response, handling HTML responses
+   * @private
+   */
+  private async safeJsonParse(response: APIResponse): Promise<any> {
+    try {
+      const contentType = response.headers()['content-type'] || '';
+      
+      if (!contentType.includes('application/json')) {
+        console.log(`⚠️  Warning: Response is ${contentType}, not JSON`);
+        return null;
+      }
+      
+      const text = await response.text();
+      if (!text || text.trim() === '') {
+        console.log('⚠️  Warning: Response body is empty');
+        return null;
+      }
+      
+      return JSON.parse(text);
+    } catch (error) {
+      console.log('⚠️  Failed to parse JSON:', error);
+      return null;
+    }
+  }
 
   /**
    * Logs API request details (useful for debugging)
@@ -83,7 +109,7 @@ export class BookCartAPI {
   private async logResponse(response: APIResponse): Promise<void> {
     console.log(`[API Response] Status: ${response.status()}`);
     try {
-      const body = await response.json();
+      const body = await this.safeJsonParse(response);
       console.log('Response body:', JSON.stringify(body, null, 2));
     } catch (e) {
       // Response might not be JSON, that's okay
@@ -112,7 +138,7 @@ export class BookCartAPI {
    *   username: 'testuser', 
    *   password: 'Test@123' 
    * });
-   * const data = await response.json();
+   * const data = await this.safeJsonParse(response);
    * const token = data.token;
    * ```
    */
@@ -132,7 +158,7 @@ export class BookCartAPI {
     // If login successful, store the token automatically
     if (response.status() === HTTP_STATUS.OK) {
       try {
-        const data = await response.json();
+        const data = await this.safeJsonParse(response);
         if (data.token) {
           this.setAuthToken(data.token);
         }
@@ -227,7 +253,7 @@ export class BookCartAPI {
    * ```typescript
    * const response = await api.getAllBooks();
    * if (response.ok()) {
-   *   const books = await response.json();
+   *   const books = await await this.safeJsonParse(response);
    *   console.log(`Found ${books.length} books`);
    * }
    * ```
@@ -460,7 +486,7 @@ export class BookCartAPI {
     
     if (response.status() === HTTP_STATUS.OK) {
       try {
-        const data = await response.json();
+        const data = await await this.safeJsonParse(response);
         return data.token || null;
       } catch (e) {
         console.error('Failed to extract token from response:', e);

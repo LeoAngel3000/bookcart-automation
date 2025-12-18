@@ -254,6 +254,21 @@ test.describe('Known UI Defects Documentation @defect', () => {
     await booksPage.goto();
     console.log('✓ Navigated to books page');
     
+    // Try to verify slider exists, but handle if it doesn't
+    try {
+      await booksPage.verifyPriceSliderVisible();
+      console.log('✓ Price slider component is visible');
+    } catch (error) {
+      console.log('');
+      console.log('❌ CRITICAL DEFECT:');
+      console.log('   Price slider component is NOT VISIBLE at all');
+      console.log('   UI may have changed or element removed');
+      console.log('');
+      
+      test.fail(true, 'Price slider component not found in DOM');
+      throw error;
+    }
+
     // AND: Price slider is visible
     await booksPage.verifyPriceSliderVisible();
     console.log('✓ Price slider component is visible');

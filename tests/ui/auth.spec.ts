@@ -117,23 +117,18 @@ test.describe('Authentication Tests @ui', () => {
    * Type: Positive Test / Smoke
    * Tags: @ui @smoke @regression
    */
-  test(`User can successfully login with valid credentials ${TEST_TAGS.SMOKE} ${TEST_TAGS.REGRESSION}`, 
-    async ({ loginPage }) => {
+  test(`User can successfully register and login ${TEST_TAGS.SMOKE} ${TEST_TAGS.REGRESSION}`, 
+      async ({ registerPage, loginPage, testUser }) => {
     
-    // GIVEN: User is on the login page
-    await loginPage.goto();
-    
-    // WHEN: User logs in with valid credentials
-    const validUser = TEST_DATA.users.standard;
-    await loginPage.login(validUser.username, validUser.password);
-    
-    // THEN: User should be logged in successfully
-    await loginPage.verifyLoginSuccess(validUser.username);
-    
-    // AND: User should be redirected away from login page
-    await expect(loginPage.page).not.toHaveURL(/.*login/);
-    
-    console.log(`✅ Login successful for user: ${validUser.username}`);
+        // Step 1: Register new user
+        await registerPage.goto();
+        await registerPage.registerUser(testUser);
+        
+        // Step 2: Verify can login with new user
+        await loginPage.goto();
+        await loginPage.login(testUser.username, testUser.password);
+        
+        await loginPage.verifyLoginSuccess(testUser.username);
   });
 
   /**

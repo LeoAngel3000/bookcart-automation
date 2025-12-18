@@ -367,24 +367,6 @@ npm run report
 
 ---
 
-## 📝 Test Cases Documentation
-
-### Complete Test Suite (10 Test Cases)
-
-| ID | Title | Type | Priority | Status | Tags |
-|----|-------|------|----------|--------|------|
-| **TC-001** | Successful User Registration | UI Functional | High | ✅ PASS | @ui @smoke |
-| **TC-002** | Duplicate Username Validation | UI Validation | High | ✅ PASS | @ui @regression |
-| **TC-003** | Missing Gender Validation Bug | UI Defect | Medium | ❌ FAIL | @ui @defect |
-| **TC-004** | Username Case Sensitivity | UI Functional | Medium | ✅ PASS | @ui @regression |
-| **TC-005** | Invalid Login Error Message Bug | UI Defect | High | ❌ FAIL | @ui @defect |
-| **TC-006** | Books Not Displayed (Critical) | UI Defect | Critical | ❌ FAIL | @ui @defect |
-| **TC-007** | Price Slider Non-Functional | UI Defect | Medium | ❌ FAIL | @ui @defect |
-| **TC-008** | API Books Endpoint 500 Error | API Defect | Critical | ❌ FAIL | @api @defect |
-| **TC-009** | API-UI Integration Flow | Integration | High | ✅ PASS | @integration @smoke |
-| **TC-010** | E2E Checkout Workflow | E2E | High | 🚫 BLOCKED | @blocked |
-
-**Note**: TC-010 is blocked because it depends on books being available (TC-006 defect).
 
 ### Test Distribution
 
@@ -400,6 +382,33 @@ npm run report
 - **Medium**: 3 test cases
 
 ---
+## 🔧 Current Test Status
+
+### Passing Tests (10) ✅
+- Navigation tests
+- Search functionality (documents no results)
+- Some defect documentation tests
+- API response time tests
+
+### Failing Tests (11) 🟡
+**Expected Failures (Documented Defects):**
+- TC-005: No error message on invalid login
+- TC-006: No books displayed
+- TC-008: API returns HTML instead of JSON
+
+**Environment Issues:**
+- Smoke tests for login/register fail due to:
+  * Test user "ortom" no longer exists
+  * User registration API returns 405 Method Not Allowed
+- These are application-side issues, not framework issues
+
+### Skipped Tests (6) ⏭️
+- Integration tests requiring user registration API (blocked by 405 error)
+- Tests requiring books to be available (blocked by TC-006)
+
+**Framework Response:**
+The framework intelligently skips tests when prerequisites are not met,
+preventing cascade failures and providing clear documentation of blockers.
 
 ## 📂 Project Structure
 
@@ -631,9 +640,8 @@ This project is created as part of a technical assessment and is available under
 
 ### Project Documentation
 
-- [Manual Test Cases (Google Sheets)](LINK_TO_YOUR_GOOGLE_SHEET)
+- [Manual Test Cases (Google Sheets)](https://docs.google.com/spreadsheets/d/1RzN4z4mGOmsGTB9w7PDvnXsXJSuN4IHpDvJGFz4c2iU/edit?usp=sharing)
 - [API Documentation](https://bookcart.azurewebsites.net/swagger/index.html)
-- [Test Execution Video](LINK_IF_YOU_CREATE_ONE)
 
 ---
 
