@@ -2,6 +2,7 @@
 
 > **Professional SDET Take-Home Assignment - iDelsoft 2025**  
 > A comprehensive test automation framework for BookCart e-commerce application using Playwright + TypeScript
+Fully made in vibe coding
 
 [![Playwright Tests](https://github.com/YOUR_USERNAME/bookcart-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/YOUR_USERNAME/bookcart-automation/actions/workflows/playwright.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
